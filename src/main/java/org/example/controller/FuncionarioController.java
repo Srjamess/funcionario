@@ -24,4 +24,8 @@ public class FuncionarioController {
     public FuncionarioDomain obtenerFuncionarioPorId(int id) throws SQLException {
         return this.funcionarioDao.obtenerFuncionarioPorId(id);
     }
+
+    public void actualizar (int id, FuncionarioDomain funcionario) throws SQLException {
+        this.funcionarioDao.actualizar(id, funcionario);
+    }
 }

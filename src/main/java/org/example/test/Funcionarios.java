@@ -125,6 +125,64 @@ public class Funcionarios {
         }
     }
 
+    public static void actualizar (FuncionarioController funcionarioController) {
+        try {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Ingrese el ID del funcionario: ");
+            int id = sc.nextInt();
+            FuncionarioDomain funcionario = funcionarioController.obtenerFuncionarioPorId(id);
+            if (funcionario == null) {
+                System.out.println("No se encontro el funcionario con el ID: " + id);
+            } else {
+                System.out.println("ID: " + funcionario.getTipoid());
+                System.out.println("Tipo ID: " + funcionario.getTipoid());
+                System.out.println("Numero Documento: " + funcionario.getFechanacimiento());
+                System.out.println("Nombres: " + funcionario.getNombres());
+                System.out.println("Apellidos: " + funcionario.getApellidos());
+                System.out.println("Estado Civil: " + funcionario.getEstadocivil());
+                System.out.println("Sexo: " + funcionario.getSexo());
+                System.out.println("Direccion: " + funcionario.getDireccion());
+                System.out.println("Telefono: " + funcionario.getTelefono());
+                System.out.println("Fecha Nacimiento: " + funcionario.getFechanacimiento());
+                System.out.println("=====================================");
+                System.out.println("Ingrese el tipo de ID: ");
+                String tid = sc.next();
+                System.out.println("Ingrese el numero de documento: ");
+                String nd = sc.next();
+                System.out.println("Ingrese los nombres: ");
+                String n = sc.next();
+                System.out.println("Ingrese los apellidos: ");
+                String a = sc.next();
+                System.out.println("Ingrese el estado civil: ");
+                String ec = sc.next();
+                System.out.println("Ingrese el sexo: ");
+                String s = sc.next();
+                System.out.println("Ingrese la direccion: ");
+                String d = sc.next();
+                System.out.println("Ingrese el telefono: ");
+                String t = sc.next();
+                System.out.println("Ingrese la fecha de nacimiento: ");
+                String fn = sc.next();
+                FuncionarioDomain funcionarioActualizado = new FuncionarioDomain();
+                funcionarioActualizado.setId(id);
+                funcionarioActualizado.setTipoid(tid);
+                funcionarioActualizado.setNumerodocumento(nd);
+                funcionarioActualizado.setNombres(n);
+                funcionarioActualizado.setApellidos(a);
+                funcionarioActualizado.setEstadocivil(ec);
+                funcionarioActualizado.setSexo(s);
+                funcionarioActualizado.setDireccion(d);
+                funcionarioActualizado.setTelefono(t);
+                funcionarioActualizado.setFechanacimiento(fn);
+                funcionarioController.actualizar(id, funcionarioActualizado);
+                System.out.println("Funcionario actualizado correctamente");
+            }
+        } catch (SQLException var14) {
+            SQLException ex = var14;
+            ex.printStackTrace();
+            System.out.println("Error al actualizar el funcionario");
+        }
+    }
 
 
 }
