@@ -60,4 +60,31 @@ public class FuncionarioDao {
         }
     }
 
+    //Metodo para crear funcionario
+    public  void crear(FuncionarioDomain funcionario) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection = ConnectionUtil.getConnection();
+            preparedStatement = connection.prepareCall(CREATE_FUNCIONARIO);
+            preparedStatement.setString(1, funcionario.getTipo_id());
+            preparedStatement.setString(2, funcionario.getNombres());
+            preparedStatement.setString(3, funcionario.getApellidos());
+            preparedStatement.setString(4, funcionario.getEstado_civil());
+            preparedStatement.setString(5, funcionario.getSexo());
+            preparedStatement.setString(6, funcionario.getDireccion());
+            preparedStatement.setString(7, funcionario.getTelefono());
+            preparedStatement.setString(8, funcionario.getFecha_nacimiento());
+            preparedStatement.executeUpdate();
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+        }
+    }
+
 }
