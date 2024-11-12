@@ -14,7 +14,7 @@ public class FuncionarioDao {
 
     //CRUD JAVA Y SQL
     private static final String GET_ALL_FUNCIONARIOS = "SELECT * FROM funcionario";
-    private static final String CREATE_FUNCIONARIO = "INSERT INTO funcionario (tipo_id, nombres, apellidos, estado_civil, sexo, direccion, telefono, fecha_nacimiento) VALUES ('?', '?', '?', '?', '?', '?', '?',  '?')";
+    private static final String CREATE_FUNCIONARIO = "INSERT INTO funcionario (Tipoid, Numerodocumento, Nombres, Apellidos, Estadocivil, Sexo, Direccion, Telefono, Fechanacimiento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String GET_FUNCIONARIO_BY_ID = "SELECT * FROM funcionario WHERE id = ?";
     private static final String UPDATE_FUNCIONARIO = "UPDATE funcionario SET tipo_id = ?, nombres = ?, apellidos = ?, estado_civil = ?, sexo = ?, direccion = ?, telefono = ?, fecha_nacimiento = ?";
     private static final String DELETE_FUNCIONARIO = "DELETE FROM funcionario WHERE id = ?";
@@ -30,20 +30,20 @@ public class FuncionarioDao {
         try {
             connection = ConnectionUtil.getConnection();
             preparedStatement = connection.prepareStatement(GET_ALL_FUNCIONARIOS);
-            resultSet = preparedStatement.getResultSet();
+            resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 FuncionarioDomain funcionario = new FuncionarioDomain();
                 funcionario.setId(resultSet.getInt("Id"));
-                funcionario.setTipoid(resultSet.getString("Tipo_id"));
+                funcionario.setTipoid(resultSet.getString("Tipoid"));
                 funcionario.setNumerodocumento(resultSet.getString("Numerodocumento"));
                 funcionario.setNombres(resultSet.getString("Nombres"));
                 funcionario.setApellidos(resultSet.getString("Apellidos"));
-                funcionario.setEstadocivil(resultSet.getString("Estado_civil"));
+                funcionario.setEstadocivil(resultSet.getString("Estadocivil"));
                 funcionario.setSexo(resultSet.getString("Sexo"));
                 funcionario.setDireccion(resultSet.getString("Direccion"));
                 funcionario.setTelefono(resultSet.getString("Telefono"));
-                funcionario.setFechanacimiento(resultSet.getString("Fecha_nacimiento"));
+                funcionario.setFechanacimiento(resultSet.getString("Fechanacimiento"));
                 funcionarios.add(funcionario);
             }
 
@@ -104,15 +104,15 @@ public class FuncionarioDao {
             if (resultSet.next()) {
                 funcionario = new FuncionarioDomain();
                 funcionario.setId(resultSet.getInt("Id"));
-                funcionario.setTipoid(resultSet.getString("Tipo_id"));
+                funcionario.setTipoid(resultSet.getString("Tipoid"));
                 funcionario.setNumerodocumento(resultSet.getString("Numerodocumento"));
                 funcionario.setNombres(resultSet.getString("Nombres"));
                 funcionario.setApellidos(resultSet.getString("Apellidos"));
-                funcionario.setEstadocivil(resultSet.getString("Estado_civil"));
+                funcionario.setEstadocivil(resultSet.getString("Estadocivil"));
                 funcionario.setSexo(resultSet.getString("Sexo"));
                 funcionario.setDireccion(resultSet.getString("Direccion"));
                 funcionario.setTelefono(resultSet.getString("Telefono"));
-                funcionario.setFechanacimiento(resultSet.getString("Fecha_nacimiento"));
+                funcionario.setFechanacimiento(resultSet.getString("Fechanacimiento"));
             }
 
             return funcionario;

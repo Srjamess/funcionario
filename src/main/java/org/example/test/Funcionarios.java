@@ -76,7 +76,6 @@ public class Funcionarios {
             System.out.println("Ingrese la fecha de nacimiento: ");
             String fn = sc.nextLine();
             System.out.println("La fecha de nacimiento es : " + fn);
-            System.out.println("__________________________________");
 
             FuncionarioDomain funcionario = new FuncionarioDomain();
             funcionario.setTipoid(tid);
@@ -90,11 +89,13 @@ public class Funcionarios {
             funcionario.setTelefono(t);
             funcionario.setFechanacimiento(fn);
             funcionarioController.crear(funcionario);
-            System.out.println("Funcionario creado correctamente");
+            System.out.println("Funcionario "+ n +" fue creado correctamente");
+            System.out.println("__________________________________");
         } catch (SQLException var12) {
             SQLException ex = var12;
             ex.printStackTrace();
             System.out.println("Error al crear el funcionario");
+            System.out.println("__________________________________");
         }
     }
 
@@ -117,6 +118,7 @@ public class Funcionarios {
                 System.out.println("Direccion: " + funcionario.getDireccion());
                 System.out.println("Telefono: " + funcionario.getTelefono());
                 System.out.println("Fecha Nacimiento: " + funcionario.getFechanacimiento());
+                System.out.println("=====================================");
             }
         } catch (SQLException var2) {
             SQLException ex = var2;
@@ -134,7 +136,7 @@ public class Funcionarios {
             if (funcionario == null) {
                 System.out.println("No se encontro el funcionario con el ID: " + id);
             } else {
-                System.out.println("ID: " + funcionario.getTipoid());
+                System.out.println("ID: " + funcionario.getId());
                 System.out.println("Tipo ID: " + funcionario.getTipoid());
                 System.out.println("Numero Documento: " + funcionario.getFechanacimiento());
                 System.out.println("Nombres: " + funcionario.getNombres());
