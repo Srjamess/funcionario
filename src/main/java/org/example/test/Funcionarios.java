@@ -186,6 +186,28 @@ public class Funcionarios {
         }
     }
 
+    public static void eliminar (FuncionarioController funcionarioController) {
+        try {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Ingrese el ID del funcionario: ");
+            int id = sc.nextInt();
+            FuncionarioDomain funcionario = funcionarioController.obtenerFuncionarioPorId(id);
+            if (funcionario == null) {
+                System.out.println("No se encontro el funcionario con el ID: " + id);
+                System.out.println("__________________________________");
+            } else {
+                funcionarioController.eliminar(id);
+                System.out.println("Funcionario eliminado correctamente");
+                System.out.println("=====================================");
+            }
+        } catch (SQLException var2) {
+            SQLException ex = var2;
+            ex.printStackTrace();
+            System.out.println("Error al eliminar el funcionario");
+            System.out.println("=====================================");
+        }
+    }
+
     public static void main(String[] args) {
         int option =-1;
         Scanner sc = new Scanner(System.in);
@@ -197,6 +219,7 @@ public class Funcionarios {
             System.out.println("2. Crear funcionario");
             System.out.println("3. Obtener funcionario por ID");
             System.out.println("4. Actualizar funcionario");
+            System.out.println("5. Eliminar funcionario");
             System.out.println("0. Salir");
             option = sc.nextInt();
             switch (option) {
@@ -211,6 +234,9 @@ public class Funcionarios {
                     break;
                 case 4:
                     actualizar(funcionarioController);
+                    break;
+                case 5:
+                    eliminar(funcionarioController);
                     break;
                 case 0:
                     System.out.println("Saliendo...");
