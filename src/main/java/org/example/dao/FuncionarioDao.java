@@ -156,4 +156,24 @@ public class FuncionarioDao {
             }
         }
     }
+
+    public void eliminar(int id) throws  SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection = ConnectionUtil.getConnection();
+            preparedStatement = connection.prepareStatement(DELETE_FUNCIONARIO);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+        }
+
+    }
 }

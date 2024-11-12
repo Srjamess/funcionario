@@ -184,6 +184,43 @@ public class Funcionarios {
         }
     }
 
+    public static void main(String[] args) {
+        int option =-1;
+        Scanner sc = new Scanner(System.in);
+        FuncionarioController funcionarioController = new FuncionarioController();
+
+        while (option != 0) {
+            System.out.println("Seleccione una opción: ");
+            System.out.println("1. Obtener funcionarios");
+            System.out.println("2. Crear funcionario");
+            System.out.println("3. Obtener funcionario por ID");
+            System.out.println("4. Actualizar funcionario");
+            System.out.println("0. Salir");
+            option = sc.nextInt();
+            switch (option) {
+                case 1:
+                    obtenerFuncionarios(funcionarioController);
+                    break;
+                case 2:
+                    crear(funcionarioController);
+                    break;
+                case 3:
+                    obtenerFuncionariosPorId(funcionarioController);
+                    break;
+                case 4:
+                    actualizar(funcionarioController);
+                    break;
+                case 0:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+                    break;
+        }
+    }
+
+    }
+
 
 }
 
