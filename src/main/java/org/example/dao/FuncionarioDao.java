@@ -31,6 +31,33 @@ public class FuncionarioDao {
             connection = ConnectionUtil.getConnection();
             preparedStatement = connection.prepareStatement(GET_ALL_FUNCIONARIOS);
             resultSet = preparedStatement.getResultSet();
+
+            while (resultSet.next()) {
+                FuncionarioDomain funcionario = new FuncionarioDomain();
+                funcionario.setId(resultSet.getInt("id"));
+                funcionario.setTipo_id(resultSet.getString("tipo_id"));
+                funcionario.setNombres(resultSet.getString("nombres"));
+                funcionario.setApellidos(resultSet.getString("apellidos"));
+                funcionario.setEstado_civil(resultSet.getString("estado_civil"));
+                funcionario.setSexo(resultSet.getString("sexo"));
+                funcionario.setDireccion(resultSet.getString("direccion"));
+                funcionario.setTelefono(resultSet.getString("telefono"));
+                funcionario.setFecha_nacimiento(resultSet.getString("fecha_nacimiento"));
+                funcionarios.add(funcionario);
+            }
+
+            return funcionarios;
+        }finally {
+            if (connection != null) {
+                connection.close();
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (resultSet != null) {
+                resultSet.close();
+            }
         }
     }
+
 }
