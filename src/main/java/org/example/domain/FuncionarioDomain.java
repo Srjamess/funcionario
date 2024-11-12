@@ -3,11 +3,14 @@ package org.example.domain;
 public class FuncionarioDomain {
     private int id;
     private String tipo_id;
+    private String numerodocumento;
     private String nombres;
     private String apellidos;
     private String estado_civil;
     private String Sexo;
     private String direccion;
+
+
     private String telefono;
     private String fecha_nacimiento;
 
@@ -25,6 +28,14 @@ public class FuncionarioDomain {
 
     public void setTipo_id(String tipo_id) {
         this.tipo_id = tipo_id;
+    }
+
+    public String getNumerodocumento() {
+        return numerodocumento;
+    }
+
+    public void setNumerodocumento(String numerodocumento) {
+        this.numerodocumento = numerodocumento;
     }
 
     public String getNombres() {
