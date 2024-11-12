@@ -20,4 +20,8 @@ public class FuncionarioController {
     public void crear(FuncionarioDomain funcionario) throws SQLException {
         this.funcionarioDao.crear(funcionario);
     }
+
+    public FuncionarioDomain obtenerFuncionarioPorId(int id) throws SQLException {
+        return this.funcionarioDao.obtenerFuncionarioPorId(id);
+    }
 }

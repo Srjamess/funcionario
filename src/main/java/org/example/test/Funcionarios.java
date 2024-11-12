@@ -19,15 +19,15 @@ public class Funcionarios {
             } else {
                 funcionarios.forEach((funcionarioDomain) -> {
                     System.out.println("ID: " + funcionarioDomain.getId());
-                    System.out.println("Tipo ID: " + funcionarioDomain.getTipo_id());
+                    System.out.println("Tipo ID: " + funcionarioDomain.getTipoid());
                     System.out.println("Numero Documento: " + funcionarioDomain.getNumerodocumento());
                     System.out.println("Nombres: " + funcionarioDomain.getNombres());
                     System.out.println("Apellidos: " + funcionarioDomain.getApellidos());
-                    System.out.println("Estado Civil: " + funcionarioDomain.getEstado_civil());
+                    System.out.println("Estado Civil: " + funcionarioDomain.getEstadocivil());
                     System.out.println("Sexo: " + funcionarioDomain.getSexo());
                     System.out.println("Direccion: " + funcionarioDomain.getDireccion());
                     System.out.println("Telefono: " + funcionarioDomain.getTelefono());
-                    System.out.println("Fecha Nacimiento: " + funcionarioDomain.getFecha_nacimiento());
+                    System.out.println("Fecha Nacimiento: " + funcionarioDomain.getFechanacimiento());
                     System.out.println("=====================================");
                 });
             }
@@ -79,16 +79,16 @@ public class Funcionarios {
             System.out.println("__________________________________");
 
             FuncionarioDomain funcionario = new FuncionarioDomain();
-            funcionario.setTipo_id(tid);
+            funcionario.setTipoid(tid);
             funcionario.setNumerodocumento(nd);
             funcionario.setNombres(n);
             funcionario.setApellidos(a);
-            funcionario.setEstado_civil(ec);
+            funcionario.setEstadocivil(ec);
             funcionario.setSexo(s);
             funcionario.setDireccion(d);
             funcionario.setDireccion(d);
             funcionario.setTelefono(t);
-            funcionario.setFecha_nacimiento(fn);
+            funcionario.setFechanacimiento(fn);
             funcionarioController.crear(funcionario);
             System.out.println("Funcionario creado correctamente");
         } catch (SQLException var12) {
@@ -97,6 +97,36 @@ public class Funcionarios {
             System.out.println("Error al crear el funcionario");
         }
     }
+
+    public static void obtenerFuncionariosPorId(FuncionarioController funcionarioController){
+        try {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Ingrese el ID del funcionario: ");
+            int id = sc.nextInt();
+            FuncionarioDomain funcionario = funcionarioController.obtenerFuncionarioPorId(id);
+            if (funcionario == null) {
+                System.out.println("No se encontro el funcionario con el ID: " + id);
+            } else {
+                System.out.println("ID: " + funcionario.getId());
+                System.out.println("Tipo ID: " + funcionario.getTipoid());
+                System.out.println("Numero Documento: " + funcionario.getNumerodocumento());
+                System.out.println("Nombres: " + funcionario.getNombres());
+                System.out.println("Apellidos: " + funcionario.getApellidos());
+                System.out.println("Estado Civil: " + funcionario.getEstadocivil());
+                System.out.println("Sexo: " + funcionario.getSexo());
+                System.out.println("Direccion: " + funcionario.getDireccion());
+                System.out.println("Telefono: " + funcionario.getTelefono());
+                System.out.println("Fecha Nacimiento: " + funcionario.getFechanacimiento());
+            }
+        } catch (SQLException var2) {
+            SQLException ex = var2;
+            ex.printStackTrace();
+            System.out.println("Error al obtener el funcionario");
+        }
+    }
+
+
+
 }
 
 

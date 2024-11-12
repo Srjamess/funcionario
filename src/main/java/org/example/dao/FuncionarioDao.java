@@ -34,16 +34,16 @@ public class FuncionarioDao {
 
             while (resultSet.next()) {
                 FuncionarioDomain funcionario = new FuncionarioDomain();
-                funcionario.setId(resultSet.getInt("id"));
-                funcionario.setTipo_id(resultSet.getString("tipo_id"));
-                funcionario.setNumerodocumento(resultSet.getString("numerodocumento"));
-                funcionario.setNombres(resultSet.getString("nombres"));
-                funcionario.setApellidos(resultSet.getString("apellidos"));
-                funcionario.setEstado_civil(resultSet.getString("estado_civil"));
-                funcionario.setSexo(resultSet.getString("sexo"));
-                funcionario.setDireccion(resultSet.getString("direccion"));
-                funcionario.setTelefono(resultSet.getString("telefono"));
-                funcionario.setFecha_nacimiento(resultSet.getString("fecha_nacimiento"));
+                funcionario.setId(resultSet.getInt("Id"));
+                funcionario.setTipoid(resultSet.getString("Tipo_id"));
+                funcionario.setNumerodocumento(resultSet.getString("Numerodocumento"));
+                funcionario.setNombres(resultSet.getString("Nombres"));
+                funcionario.setApellidos(resultSet.getString("Apellidos"));
+                funcionario.setEstadocivil(resultSet.getString("Estado_civil"));
+                funcionario.setSexo(resultSet.getString("Sexo"));
+                funcionario.setDireccion(resultSet.getString("Direccion"));
+                funcionario.setTelefono(resultSet.getString("Telefono"));
+                funcionario.setFechanacimiento(resultSet.getString("Fecha_nacimiento"));
                 funcionarios.add(funcionario);
             }
 
@@ -69,15 +69,15 @@ public class FuncionarioDao {
         try {
             connection = ConnectionUtil.getConnection();
             preparedStatement = connection.prepareCall(CREATE_FUNCIONARIO);
-            preparedStatement.setString(1, funcionario.getTipo_id());
+            preparedStatement.setString(1, funcionario.getTipoid());
             preparedStatement.setString(2, funcionario.getNumerodocumento());
             preparedStatement.setString(3, funcionario.getNombres());
             preparedStatement.setString(4, funcionario.getApellidos());
-            preparedStatement.setString(5, funcionario.getEstado_civil());
+            preparedStatement.setString(5, funcionario.getEstadocivil());
             preparedStatement.setString(6, funcionario.getSexo());
             preparedStatement.setString(7, funcionario.getDireccion());
             preparedStatement.setString(8, funcionario.getTelefono());
-            preparedStatement.setString(9, funcionario.getFecha_nacimiento());
+            preparedStatement.setString(9, funcionario.getFechanacimiento());
             preparedStatement.executeUpdate();
         } finally {
             if (connection != null) {
@@ -87,6 +87,48 @@ public class FuncionarioDao {
                 preparedStatement.close();
             }
         }
+    }
+
+    public FuncionarioDomain obtenerFuncionarioPorId(int id) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        FuncionarioDomain funcionario = null;
+
+        FuncionarioDomain var6;
+        try{
+            connection = ConnectionUtil.getConnection();
+            preparedStatement = connection.prepareStatement(GET_FUNCIONARIO_BY_ID);
+            preparedStatement.setInt(1, id);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                funcionario = new FuncionarioDomain();
+                funcionario.setId(resultSet.getInt("Id"));
+                funcionario.setTipoid(resultSet.getString("Tipo_id"));
+                funcionario.setNumerodocumento(resultSet.getString("Numerodocumento"));
+                funcionario.setNombres(resultSet.getString("Nombres"));
+                funcionario.setApellidos(resultSet.getString("Apellidos"));
+                funcionario.setEstadocivil(resultSet.getString("Estado_civil"));
+                funcionario.setSexo(resultSet.getString("Sexo"));
+                funcionario.setDireccion(resultSet.getString("Direccion"));
+                funcionario.setTelefono(resultSet.getString("Telefono"));
+                funcionario.setFechanacimiento(resultSet.getString("Fecha_nacimiento"));
+                var6 = funcionario;
+                return var6;
+            }
+            var6 = null;
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (resultSet != null) {
+                resultSet.close();
+            }
+        }
+        return var6;
     }
 
 }

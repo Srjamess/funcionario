@@ -1,65 +1,63 @@
 package org.example.domain;
 
 public class FuncionarioDomain {
-    private int id;
-    private String tipo_id;
-    private String numerodocumento;
-    private String nombres;
-    private String apellidos;
-    private String estado_civil;
+    private int Id;
+    private String Tipoid;
+    private String Numerodocumento;
+    private String Nombres;
+    private String Apellidos;
+    private String Estadocivil;
     private String Sexo;
-    private String direccion;
-
-
-    private String telefono;
-    private String fecha_nacimiento;
+    private String Direccion;
+    private String Telefono;
+    private String Fechanacimiento;
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        Id = id;
     }
 
-    public String getTipo_id() {
-        return tipo_id;
+    public String getTipoid() {
+        return Tipoid;
     }
 
-    public void setTipo_id(String tipo_id) {
-        this.tipo_id = tipo_id;
-    }
-
-    public String getNumerodocumento() {
-        return numerodocumento;
-    }
-
-    public void setNumerodocumento(String numerodocumento) {
-        this.numerodocumento = numerodocumento;
+    public void setTipoid(String tipoid) {
+        Tipoid = tipoid;
     }
 
     public String getNombres() {
-        return nombres;
+        return Nombres;
     }
 
     public void setNombres(String nombres) {
-        this.nombres = nombres;
+        Nombres = nombres;
+    }
+
+    public String getNumerodocumento() {
+        return Numerodocumento;
+    }
+
+    public void setNumerodocumento(String numerodocumento) {
+        Numerodocumento = numerodocumento;
     }
 
     public String getApellidos() {
-        return apellidos;
+        return Apellidos;
     }
 
     public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+        Apellidos = apellidos;
     }
 
-    public String getEstado_civil() {
-        return estado_civil;
+    public String getEstadocivil() {
+        return Estadocivil;
     }
 
-    public void setEstado_civil(String estado_civil) {
-        this.estado_civil = estado_civil;
+    public void setEstadocivil(String estadocivil) {
+        Estadocivil = estadocivil;
     }
 
     public String getSexo() {
@@ -71,41 +69,31 @@ public class FuncionarioDomain {
     }
 
     public String getDireccion() {
-        return direccion;
+        return Direccion;
     }
 
     public void setDireccion(String direccion) {
-        this.direccion = direccion;
+        Direccion = direccion;
     }
 
     public String getTelefono() {
-        return telefono;
+        return Telefono;
     }
 
     public void setTelefono(String telefono) {
-        this.telefono = telefono;
+        Telefono = telefono;
     }
 
-    public String getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public String getFechanacimiento() {
+        return Fechanacimiento;
     }
 
-    public void setFecha_nacimiento(String fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setFechanacimiento(String fechanacimiento) {
+        Fechanacimiento = fechanacimiento;
     }
 
     @Override
     public String toString() {
-        return "Funcionarios{" +
-                "id='" + id + '\'' +
-                ", tipo_id='" + tipo_id + '\'' +
-                ", nombres='" + nombres + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", estado_civil='" + estado_civil + '\'' +
-                ", Sexo='" + Sexo + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", fecha_nacimiento='" + fecha_nacimiento + '\'' +
-                '}';
+        return this.Nombres + " " + this.Apellidos;
     }
 }
