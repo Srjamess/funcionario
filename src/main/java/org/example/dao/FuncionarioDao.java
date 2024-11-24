@@ -16,7 +16,8 @@ public class FuncionarioDao {
     private static final String GET_ALL_FUNCIONARIOS = "SELECT * FROM funcionario";
     private static final String CREATE_FUNCIONARIO = "INSERT INTO funcionario (Tipoid, Numerodocumento, Nombres, Apellidos, Estadocivil, Sexo, Direccion, Telefono, Fechanacimiento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String GET_FUNCIONARIO_BY_ID = "SELECT * FROM funcionario WHERE id = ?";
-    private static final String UPDATE_FUNCIONARIO = "UPDATE funcionario SET tipo_id = ?, nombres = ?, apellidos = ?, estado_civil = ?, sexo = ?, direccion = ?, telefono = ?, fecha_nacimiento = ?";
+    private static final String UPDATE_FUNCIONARIO = "UPDATE funcionario SET Tipoid = ?, Numerodocumento = ?, Nombres = ?, Apellidos = ?, "
+            + "Estadocivil = ?, Sexo = ?, Direccion = ?, Telefono = ?, Fechanacimiento = ? where ID = ?";
     private static final String DELETE_FUNCIONARIO = "DELETE FROM funcionario WHERE id = ?";
 
     //Metodo para listar funcionarios, obtener funcionario
